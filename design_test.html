@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Capstone Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #4361ee;
+            --secondary-blue: #3a0ca3;
+            --accent: #f72585;
+            --light-bg: #f8f9fa;
+            --dark-text: #2b2d42;
+            --light-text: #6c757d;
+            --card-bg: #ffffff;
+            --highlight: #4cc9f0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: white;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(67, 97, 238, 0.3);
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-text);
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-blue);
+            background: rgba(67, 97, 238, 0.1);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-blue);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.7)), 
+                        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f8f9fa"/><circle cx="20" cy="20" r="5" fill="%234361ee" fill-opacity="0.1"/><circle cx="60" cy="40" r="8" fill="%23f72585" fill-opacity="0.1"/><circle cx="80" cy="70" r="6" fill="%233a0ca3" fill-opacity="0.1"/><circle cx="40" cy="80" r="10" fill="%234cc9f0" fill-opacity="0.1"/></svg>');
+            padding: 100px 0 80px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--dark-text);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .hero h1:after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background: var(--accent);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 30px auto;
+            color: var(--light-text);
+        }
+        
+        .hero-highlight {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(67, 97, 238, 0.3);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 20px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(67, 97, 238, 0.4);
+            background: var(--secondary-blue);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--card-bg);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2rem;
+            color: var(--dark-text);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Card Styles */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary-blue);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            background: var(--primary-blue);
+            color: white;
+            padding: 15px 20px;
+        }
+        
+        .card-body {
+            padding: 20px;
+        }
+        
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+        
+        .team-member {
+            text-align: center;
+            background: var(--card-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+        
+        .member-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-blue);
+            font-size: 2.5rem;
+            border: 3px solid var(--primary-blue);
+        }
+        
+        /* Timeline for updates */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline:before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            background: var(--primary-blue);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            padding: 20px 0;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            padding-right: 40px;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            padding-left: 40px;
+        }
+        
+        .timeline-content {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .timeline-content:after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--card-bg);
+            transform: rotate(45deg);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content:after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content:after {
+            left: -10px;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin-bottom: 5px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark-text);
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.6);
+        }
+        
+        /* Capstone specific elements */
+        .project-status {
+            background: rgba(76, 201, 240, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid var(--highlight);
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 4px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+        
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-blue), var(--secondary-blue));
+            border-radius: 4px;
+            width: 65%; /* Example progress */
+        }
+        
+        .fun-element {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .fun-fact {
+            display: inline-block;
+            padding: 10px 20px;
+            background: rgba(247, 37, 133, 0.1);
+            border-radius: 30px;
+            color: var(--accent);
+            font-weight: 500;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--card-bg);
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .timeline:before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 0;
+                text-align: left;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                left: 0;
+                padding-right: 0;
+                padding-left: 70px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content:after,
+            .timeline-item:nth-child(even) .timeline-content:after {
+                left: -10px;
+                right: auto;
+            }
+        }
+        
+        /* Capstone specific styles */
+        .capstone-note {
+            background: rgba(67, 97, 238, 0.05);
+            border-left: 4px solid var(--primary-blue);
+            padding: 12px 15px;
+            margin: 15px 0;
+            border-radius: 0 4px 4px 0;
+            font-size: 0.95rem;
+        }
+        
+        .placeholder {
+            background-color: #f8f9fa;
+            border: 1px dashed #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            color: #6c757d;
+            margin: 15px 0;
+        }
+        
+        .placeholder-image {
+            width: 100%;
+            height: 180px;
+            background-color: #e9ecef;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #adb5bd;
+            margin-bottom: 15px;
+        }
+        
+        .accent-color {
+            color: var(--accent);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <div class="logo-text">CapstoneJourney</div>
+                </div>
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">Our Project</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#updates">Progress</a></li>
+                        <li><a href="#deliverables">Work</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#contact">Connect</a></li>
+                    </ul>
+                    <div class="mobile-menu-btn" id="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Our Capstone Journey</h1>
+            <p>Follow along as we develop <span class="hero-highlight">Project Nova</span> - our senior capstone project tackling real-world problems through innovation and collaboration</p>
+            
+            <div class="project-status">
+                <h3>Current Status: Prototyping Phase</h3>
+                <div class="progress-bar">
+                    <div class="progress"></div>
+                </div>
+                <p>65% complete - On track for December presentation</p>
+            </div>
+            
+            <a href="#about" class="cta-button">Explore Our Project</a>
+            
+            <div class="fun-element">
+                <div class="fun-fact">
+                    <i class="fas fa-lightbulb"></i> Fun fact: We've consumed 84 cups of coffee so far!
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Project -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Our Project</h2>
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h3><i class="fas fa-rocket"></i> Project Vision</h3>
+                </div>
+                <div class="card-body">
+                    <div class="capstone-note">
+                        This section describes our project's mission, the problem we're solving, and our proposed solution.
+                    </div>
+                    
+                    <p>Our project aims to develop an accessible platform for personalized learning using AI technology. We noticed that many students struggle with standardized education approaches and want to create a solution that adapts to individual learning styles.</p>
+                    
+                    <div class="placeholder">
+                        <div class="placeholder-image">
+                            <i class="fas fa-brain fa-3x"></i>
+                        </div>
+                        <p>Problem statement and solution overview will be displayed here with diagrams.</p>
+                    </div>
+                    
+                    <h4>Technologies We're Using:</h4>
+                    <ul>
+                        <li>React.js for the frontend</li>
+                        <li>Node.js for the backend</li>
+                        <li>TensorFlow.js for machine learning components</li>
+                        <li>MongoDB for data storage</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meet Our Team</h2>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Alex Johnson</h3>
+                    <p class="accent-color">Project Lead & Developer</p>
+                    <p>Computer Science Senior</p>
+                    <p>Passionate about AI and educational equity</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Maria Chen</h3>
+                    <p class="accent-color">UX Designer & Researcher</p>
+                    <p>Design & Psychology Double Major</p>
+                    <p>Focuses on creating intuitive user experiences</p>
+                </div>
+                
+                <div class="team-member">
+                    <div class="member-photo">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3>Jordan Williams</h3>
+                    <p class="accent-color">Backend Developer</p>
+                    <p>Computer Engineering Senior</p>
+                    <p>Expert in database architecture and APIs</p>
+                </div>
+            </div>
+            
+            <div class="capstone-note" style="margin-top: 30px;">
+                We're a multidisciplinary team from different majors brought together by our passion for education technology.
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Updates/Blog -->
+    <section id="updates">
+        <div class="container">
+            <div class="section-title">
+                <h2>Project Progress</h2>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">September 15, 2023</div>
+                    <div class="timeline-content">
+                        <h4>Initial Research Completed</h4>
+                        <p>Finished literature review and competitor analysis. Submitted project proposal to faculty.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">October 5, 2023</div>
+                    <div class="timeline-content">
+                        <h4>Prototype V1 Developed</h4>
+                        <p>Created first interactive prototype and conducted initial user testing with 15 participants.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">October 28, 2023</div>
+                    <div class="timeline-content">
+                        <h4>Mid-Point Presentation</h4>
+                        <p>Presented our progress to faculty and received valuable feedback on our approach.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">Next Steps</div>
+                    <div class="timeline-content">
+                        <h4>Algorithm Implementation</h4>
+                        <p>Focusing on developing the adaptive learning algorithm based on testing results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Our Journey</h3>
+                    <p>We're a team of students completing our senior capstone project at University Name. Follow our journey as we develop a solution we're passionate about.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Project Links</h3>
+                    <ul style="list-style: none;">
+                        <li><a href="#home" style="color: white;">Home</a></li>
+                        <li><a href="#about" style="color: white;">Our Project</a></li>
+                        <li><a href="#team" style="color: white;">Team</a></li>
+                        <li><a href="#contact" style="color: white;">Connect With Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                    <p>Follow our progress and send us suggestions!</p>
+                    <div style="margin-top: 15px;">
+                        <a href="#" style="color: white; margin-right: 15px;"><i class="fab fa-github fa-2x"></i></a>
+                        <a href="#" style="color: white; margin-right: 15px;"><i class="fab fa-twitter fa-2x"></i></a>
+                        <a href="#" style="color: white;"><i class="fas fa-envelope fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 CapstoneJourney. University Name Computer Science Department.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle functionality
+        document.getElementById('mobile-menu-toggle').addEventListener('click', function() {
+            document.getElementById('nav-menu').classList.toggle('show');
+        });
+        
+        // Simple animation for timeline items
+        document.addEventListener('DOMContentLoaded', function() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            timelineItems.forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>
