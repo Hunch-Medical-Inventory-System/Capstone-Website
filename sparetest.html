@@ -22,6 +22,7 @@
             background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
             color: #333;
             line-height: 1.6;
+            overflow-x: hidden;
         }
         
         .container {
@@ -127,6 +128,7 @@
             padding: 120px 0 80px;
             background: linear-gradient(135deg, rgba(255,255,255,0.9) 0%, rgba(245,245,245,0.9) 100%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="white"/><path d="M0 50 L100 50 M50 0 L50 100" stroke="%23f0f0f0" stroke-width="2"/></svg>');
             background-size: cover;
+            position: relative;
         }
         
         .hero h1 {
@@ -173,6 +175,112 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+        
+        /* Demo Gallery Section */
+        .demo-gallery {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
+        
+        .gallery-container {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-track {
+            display: flex;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-slide:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-nav:hover {
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .gallery-prev {
+            left: 20px;
+        }
+        
+        .gallery-next {
+            right: 20px;
+        }
+        
+        .gallery-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .gallery-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ddd;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-dot.active {
+            background: #6a11cb;
         }
         
         /* Team Section */
@@ -240,6 +348,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .team-member:hover .member-image img {
+            transform: scale(1.1);
         }
         
         .member-info {
@@ -406,8 +519,7 @@
         
         /* Footer */
         footer {
-            background: linear-gradient(to right, #6a11cb, #2575fc);
-            color: white;
+            color: #474aff;
             padding: 40px 0;
             text-align: center;
         }
@@ -436,13 +548,13 @@
         }
         
         .footer-links a {
-            color: white;
+            color: #474aff;
             text-decoration: none;
             transition: all 0.3s ease;
         }
         
         .footer-links a:hover {
-            color: #e0e0e0;
+            color: hsl(270, 92%, 38%);
         }
         
         .copyright {
@@ -480,6 +592,34 @@
                 margin: 5px 0;
                 width: 200px;
             }
+            
+            .gallery-container {
+                height: 300px;
+            }
+        }
+        
+        /* Animation Classes */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animate-on-scroll.delay-1 {
+            transition-delay: 0.2s;
+        }
+        
+        .animate-on-scroll.delay-2 {
+            transition-delay: 0.4s;
+        }
+        
+        .animate-on-scroll.delay-3 {
+            transition-delay: 0.6s;
         }
     </style>
 </head>
@@ -490,6 +630,7 @@
             <a href="#" class="logo">The JJs V2</a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#demo">Demo</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -513,16 +654,59 @@
         <div class="container">
             <h2 class="section-title">About Our Project</h2>
             <div class="about-content">
-                <div class="about-text">
-                    <p>We are a team of 2 passionate engineers, designers, and innovators dedicated to the single greatest medical inventory system of all time. Our project focuses on developing AI-powered solutions for sustainable inventory management.</p>
+                <div class="about-text animate-on-scroll">
+                    <p>We are a team of 3 passionate engineers, designers, and innovators dedicated to the single greatest medical inventory system of all time. Our project focuses on developing AI-powered solutions for sustainable inventory management.</p>
                     <p>Founded in 2024, we've grown from a small group of 2, to a more well known group of 2. Our mission is to make tracking medical supplies in space as effortless as possible.</p>
                     <p>We believe that the future of medical storage lies in smarter systems and better AI. Our system helps astronauts optimize database usage, reduce waste, and save money.</p>
                     <a href="#team" class="btn">Meet Our Team</a>
                 </div>
-                <div class="about-image">
+                <div class="about-image animate-on-scroll delay-1">
                     <!-- Add your about image here -->
-                    <img src="path/to/your-about-image.jpg" alt="Medical Inventory System">
+                    <img src="logo.png" alt="Medical Inventory System">
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Demo Gallery Section -->
+    <section id="demo" class="demo-gallery">
+        <div class="container">
+            <h2 class="section-title">System Demo</h2>
+            <div class="gallery-container">
+                <div class="gallery-track">
+                    <div class="gallery-slide">
+                        <img src="home.png" alt="System Interface">
+                        <div class="gallery-caption">
+                            <h3>Intuitive User Interface</h3>
+                            <p>Our system features a clean, easy-to-use interface designed for astronauts in space environments.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="database.png" alt="Inventory Tracking">
+                        <div class="gallery-caption">
+                            <h3>Real-time Inventory Tracking</h3>
+                            <p>Track medical supplies in real-time with our advanced monitoring system.</p>
+                        </div>
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="ai.png" alt="AI Assistant">
+                        <div class="gallery-caption">
+                            <h3>AI-Powered Analytics</h3>
+                            <p>Our system uses machine learning to predict inventory needs and optimize resource allocation.</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="gallery-nav gallery-prev">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="gallery-nav gallery-next">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="gallery-dots">
+                <span class="gallery-dot active" data-index="0"></span>
+                <span class="gallery-dot" data-index="1"></span>
+                <span class="gallery-dot" data-index="2"></span>
             </div>
         </div>
     </section>
@@ -538,9 +722,9 @@
             
             <div class="tab-content active" id="team-content">
                 <div class="team-grid">
-                    <div class="team-member">
+                    <div class="team-member animate-on-scroll">
                         <div class="member-image">
-                            <!-- Add Charlie's image here -->
+                          
                             <img src="charlie.jpeg" alt="Charlie Franzel">
                         </div>
                         <div class="member-info">
@@ -555,9 +739,9 @@
                         </div>
                     </div>
                     
-                    <div class="team-member">
+                    <div class="team-member animate-on-scroll delay-1">
                         <div class="member-image">
-                            <!-- Add Josiah's image here -->
+                         
                             <img src="joe.jpg" alt="Josiah Ehrler">
                         </div>
                         <div class="member-info">
@@ -565,9 +749,25 @@
                             <div class="member-role">Warren Tech | Jeffco Open Secondary</div>
                             <p>Josiah is an aspiring software & artificial intelligence developer, aiming to better the medical world with new technologies. He is studying at Warren Tech and Red Rocks Community College.</p>
                             <div class="social-links">
-                                <a href="#"><i class="fab fa-github"></i></a>
+                                <a href="https://github.com/masterofsoap"><i class="fab fa-github"></i></a>
                                 <a href="https://jehrler.com"><i class="fas fa-globe"></i></a>
-                                <a href="https://www.linkedin.com/in/"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://www.linkedin.com/in/josiahehrler/"><i class="fab fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-member animate-on-scroll delay-1">
+                        <div class="member-image">
+                         
+                            <img src="jack.jpg" alt="Josiah Ehrler">
+                        </div>
+                        <div class="member-info">
+                            <h3>Jacob Clarkson</h3>
+                            <div class="member-role">Warren Tech | Evergreen High</div>
+                            <p>Jac is a talented mySQL developer... More coming soon.</p>
+                            <div class="social-links">
+                                <a href="https://github.com/JClarkson2026"><i class="fab fa-github"></i></a>
+                                <a href="https://www.linkedin.com/in/jacob-clarkson-954653387/"><i class="fab fa-linkedin"></i></a>
                             </div>
                         </div>
                     </div>
@@ -576,7 +776,7 @@
             
             <div class="tab-content" id="advisors-content">
                 <div class="team-grid">
-                    <div class="team-member">
+                    <div class="team-member animate-on-scroll">
                         <div class="member-image">
                             <!-- Add Zachary's image here -->
                             <img src="path/to/zachary-image.jpg" alt="Zachary Flower">
@@ -588,7 +788,7 @@
                         </div>
                     </div>
                     
-                    <div class="team-member">
+                    <div class="team-member animate-on-scroll delay-1">
                         <div class="member-image">
                             <!-- Add Justin's image here -->
                             <img src="justin.jpg" alt="Justin Libhart">
@@ -600,7 +800,7 @@
                         </div>
                     </div>
                     
-                    <div class="team-member">
+                    <div class="team-member animate-on-scroll delay-2">
                         <div class="member-image">
                             <!-- Add Lisa's image here -->
                             <img src="path/to/lisa-image.jpg" alt="Lisa Thompson">
@@ -617,60 +817,91 @@
     </section>
 
     <!-- Blog Section -->
-    <section id="blog">
-        <div class="container">
-            <h2 class="section-title">Blog</h2>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-content">
-                        <div class="blog-date">June 15, 2024</div>
-                        <h3>This is going to be the blog title</h3>
-                        <p class="blog-excerpt">FILL IN SUB TEXT HERE FOR FIRST BLOG POST</p>
-                        <a href="#" class="btn">Read More</a>
+<section id="blog" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <h2 class="section-title text-3xl font-bold text-center mb-12">Project Blog</h2>
+
+        <div class="blog-grid grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <!-- Blog Post Template -->
+            <div class="blog-card animate-on-scroll bg-white rounded-2xl shadow-lg overflow-hidden transition-transform hover:scale-105">
+                <div class="blog-content p-6">
+                    <div class="blog-date text-sm text-gray-500 mb-2">October 9, 2025</div>
+                    <h3 class="text-xl font-semibold mb-4">Weekly Progress Report #1 - Josiah Ehrler</h3>
+
+                    <div class="blog-section mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Summary of Work Completed</h4>
+                        <p class="text-gray-600">
+                            This week, I focused on the creation of our first demo and setting up our Jetson Nano to handle our Database and AI. 
+                            Progress was made on he front-end visual design, which aligns with our 
+                            project goal of meeting Nasa's high standard for us. 
+                            For example, we now have a strong demonstration and a working mySQL database that will be able to run much faster and with less power in space than our previous model by far. 
+                            These updates keep us on track with the overall project timeline.
+                        </p>
                     </div>
-                </div>
+
+                    <div class="blog-section mb-4">
+                        <h4 class="font-semibold text-gray-800 mb-2">Challenges Encountered and Solutions Implemented</h4>
+                        <p class="text-gray-600">
+                            During this week, I encountered issues with setting up oLlama on the Jetson nano, due to many dependencies being outdated.. 
+                            To resolve this, I found a newer and updated model of the LLM that is more scaleable and I was able to easily install it from there.. 
+                            However some challenges remain unresolved, the plan for next week is to continue setting up the database and AI for further integration. 
+                            This will help improve our project and demonstrationto Nasa, to further show our effort.
+                        </p>
+                    </div>
+
+                    <div class="blog-section mb-6">
+                        <h4 class="font-semibold text-gray-800 mb-2">Goals for the Upcoming Week</h4>
+                        <p class="text-gray-600">
+                            Next week, my primary objectives are to connect the Nano database and AI to our front-end demo to have a true demonstaration of how our system will work. 
+                            These will help advance progress on the overall progression of the project and address any remaining issues from the previous week. 
+                            Specific goals include:  
+                            <ul class="list-disc list-inside mt-2 text-gray-600">
+                                <li>Complete Nano Installations</li>
+                                <li>Test and refine Nano & Demo communication</li>
+                                <li>Document progress and prepare for PDR meeting</li>
+                            </ul>
+                        </p>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Portfolio Section -->
     <section id="portfolio">
         <div class="container">
             <h2 class="section-title">Our Portfolio</h2>
             <div class="resources-grid">
-                <div class="resource-card">
-                    <h3><i class="fas fa-file-pdf"></i> Project Documentation</h3>
+                <div class="resource-card animate-on-scroll">
+                    <h3><i class="fas fa-file-pdf"></i> Project Documentation - Download funtionality broken</h3>
                     <p>Complete documentation of our medical inventory system, including technical specifications and implementation details.</p>
                     <a href="#" class="btn">Download PDF</a>
                 </div>
                 
-                <div class="resource-card">
+                <div class="resource-card animate-on-scroll delay-1">
                     <h3><i class="fas fa-video"></i> System Demo</h3>
-                    <p>Watch a video demonstration of our medical inventory system in action, showcasing its key features and capabilities.</p>
-                    <a href="#" class="btn">Watch Video</a>
+                    <p>View real images of our medical inventory system in action, showcasing its key features and capabilities.</p>
+                    <a href="demo" class="btn">View Images</a>
                 </div>
                 
-                <div class="resource-card">
+                <div class="resource-card animate-on-scroll delay-2">
                     <h3><i class="fas fa-code"></i> GitHub Repository</h3>
                     <p>Access our open-source codebase and contribute to the development of our medical inventory system.</p>
-                    <a href="#" class="btn">View on GitHub</a>
+                    <a href="https://github.com/Hunch-Medical-Inventory-System" class="btn">View on GitHub</a>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Resources Section -->
-    <section id="resources">
-        <div class="container">
-            <h2 class="section-title">Resources</h2>
 
 
     <!-- Contact Section -->
     <section id="contact">
         <div class="container">
             <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-form">
+            <div class="contact-form animate-on-scroll">
                 <form id="contactForm">
                     <div class="form-group">
                         <label for="name">Name</label>
@@ -704,6 +935,7 @@
             <div class="footer-logo">JJs Hunch</div>
             <ul class="footer-links">
                 <li><a href="#about">About</a></li>
+                <li><a href="#demo">Demo</a></li>
                 <li><a href="#team">Team</a></li>
                 <li><a href="#blog">Blog</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -749,6 +981,69 @@
                     contactForm.reset();
                 });
             }
+            
+            // Gallery functionality
+            const galleryTrack = document.querySelector('.gallery-track');
+            const gallerySlides = document.querySelectorAll('.gallery-slide');
+            const galleryDots = document.querySelectorAll('.gallery-dot');
+            const prevBtn = document.querySelector('.gallery-prev');
+            const nextBtn = document.querySelector('.gallery-next');
+            let currentSlide = 0;
+            
+            function updateGallery() {
+                galleryTrack.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // Update active dot
+                galleryDots.forEach((dot, index) => {
+                    if (index === currentSlide) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Next slide
+            nextBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide + 1) % gallerySlides.length;
+                updateGallery();
+            });
+            
+            // Previous slide
+            prevBtn.addEventListener('click', () => {
+                currentSlide = (currentSlide - 1 + gallerySlides.length) % gallerySlides.length;
+                updateGallery();
+            });
+            
+
+            // Dot navigation
+            galleryDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateGallery();
+                });
+            });
+            
+            
+            // Scroll animation
+            const animateElements = document.querySelectorAll('.animate-on-scroll');
+            
+            function checkScroll() {
+                animateElements.forEach(element => {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementTop < windowHeight - 100) {
+                        element.classList.add('visible');
+                    }
+                });
+            }
+            
+            // Initial check
+            checkScroll();
+            
+            // Check on scroll
+            window.addEventListener('scroll', checkScroll);
         });
     </script>
 </body>
