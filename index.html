@@ -6,7 +6,7 @@
     <title>Medical Inventory · NASA Hunch | JJs V2</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ---------- DARK, CLEAN – but we KEEP all your original text & detail ---------- */
+    
         * {
             margin: 0;
             padding: 0;
@@ -72,7 +72,7 @@
             text-decoration: none;
         }
 
-        /* ----- buttons – minimal, sharp, dark/blue ----- */
+
         .btn {
             display: inline-block;
             padding: 12px 30px;
@@ -139,7 +139,6 @@
             color: white;
         }
 
-        /* ----- hero (minimal, dark) ----- */
         .hero {
             text-align: center;
             padding: 120px 0 80px;
@@ -163,7 +162,6 @@
             color: #cbd8ed;
         }
 
-        /* ----- about – keep full text, dark style ----- */
         .about-content {
             display: flex;
             align-items: center;
@@ -194,7 +192,6 @@
             opacity: 0.95;
         }
 
-        /* ----- gallery / demo (dark) ----- */
         .demo-gallery {
             background: #0d1014;
         }
@@ -296,7 +293,7 @@
             width: 26px;
         }
 
-        /* ----- TABS (team/advisors) – dark but clean ----- */
+     
         .team-tabs {
             display: flex;
             justify-content: center;
@@ -325,7 +322,7 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
 
-        /* ----- team cards – FULL bios, nothing removed, just dark skin ----- */
+
         .team-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -407,7 +404,7 @@
             color: black;
         }
 
-        /* ---------- BLOG – your EXACT full descriptions, no simplification ---------- */
+
         #blog {
             background: #0b0e12;
         }
@@ -469,6 +466,23 @@
             margin-bottom: 4px;
         }
 
+
+        .video-embed {
+            margin: 25px 0 10px;
+            border-radius: 18px;
+            overflow: hidden;
+            border: 1px solid #3b82f6;
+            background: #000;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+        }
+
+        .video-embed video {
+            display: block;
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
         /* resources/portfolio */
         .resources-grid {
             display: grid;
@@ -493,24 +507,7 @@
             margin-right: 10px;
         }
 
-        .video-download-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-top: 20px;
-            background: #1b2630;
-            padding: 15px 20px;
-            border-radius: 14px;
-            border: 1px solid #32424f;
-        }
 
-        .video-download-row span {
-            color: #cbdae9;
-            font-weight: 400;
-        }
-
-        /* ----- contact form (dark, clean) ----- */
         .contact-form {
             max-width: 620px;
             margin: 0 auto;
@@ -616,7 +613,6 @@
     </style>
 </head>
 <body>
-    <!-- NAVIGATION – DARK, CLEAN -->
     <nav>
         <div class="container nav-container">
             <a href="#" class="logo">The JJs V2 · NASA</a>
@@ -631,7 +627,6 @@
         </div>
     </nav>
 
-    <!-- HERO -->
     <section class="hero">
         <div class="container">
             <h1>Medical Inventory System</h1>
@@ -640,7 +635,7 @@
         </div>
     </section>
 
-    <!-- ABOUT – your exact original text, untouched -->
+
     <section id="about">
         <div class="container">
             <h2 class="section-title">About Our Project</h2>
@@ -658,7 +653,7 @@
         </div>
     </section>
 
-    <!-- DEMO GALLERY -->
+
     <section id="demo" class="demo-gallery">
         <div class="container">
             <h2 class="section-title">System Demo</h2>
@@ -697,7 +692,7 @@
         </div>
     </section>
 
-    <!-- TEAM SECTION – FULL bios, untouched, advisors intact -->
+    
     <section id="team">
         <div class="container">
             <h2 class="section-title">Our Team</h2>
@@ -706,7 +701,7 @@
                 <button class="tab-btn" data-tab="advisors">Advisors</button>
             </div>
             
-            <!-- TEAM CONTENT (core) – your original text, word for word -->
+           
             <div class="tab-content active" id="team-content">
                 <div class="team-grid">
                     <div class="team-member animate-on-scroll">
@@ -758,7 +753,7 @@
                 </div>
             </div>
             
-            <!-- ADVISORS – exactly as written -->
+        
             <div class="tab-content" id="advisors-content">
                 <div class="team-grid">
                     <div class="team-member animate-on-scroll">
@@ -798,12 +793,12 @@
         </div>
     </section>
 
-    
     <section id="blog">
         <div class="container">
             <h2 class="section-title">Project Blog</h2>
             <div class="blog-grid">
 
+                
                 <div class="blog-card animate-on-scroll">
                     <div class="blog-content">
                         <div class="blog-date">October 9, 2025</div>
@@ -957,6 +952,7 @@
                     </div>
                 </div>
                 
+
                 <div class="blog-card animate-on-scroll">
                     <div class="blog-content">
                         <div class="blog-date">March 6, 2026</div>
@@ -966,6 +962,14 @@
                             <p>This week our team implemented the new sorting and filtering system for the Alerts page based on feedback from the Critical Design Review. The interface now includes dedicated tabs that clearly separate low stock items and expired or soon-to-expire items, allowing users to quickly prioritize the most urgent inventory issues. This is especially useful in high-pressure medical scenarios where response time is critical.</p>
                             <p>In addition, we made performance improvements to the MedLlama2 integration. The model now runs more smoothly with noticeably reduced latency during typical queries, which improves the responsiveness of the smart search and suggestion features within the system.</p>
                             <p>To demonstrate the updated Alerts functionality, we recorded a short demo video that walks through the interface and shows the sorting system in action.</p>
+                            
+                           
+                            <div class="video-embed">
+                                <video controls preload="metadata" poster="home.png">
+                                    <source src="JJs_Sorting.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
                         </div>
                         <div class="blog-section">
                             <h4>Challenges Encountered and Solutions Implemented</h4>
@@ -982,12 +986,12 @@
                         </div>
                     </div>
                 </div>
+          
 
             </div>
         </div>
     </section>
 
-    <!-- PORTFOLIO / RESOURCES -->
     <section id="portfolio">
         <div class="container">
             <h2 class="section-title">Our Portfolio</h2>
@@ -1007,11 +1011,6 @@
                     <p>Access our open-source codebase and contribute to the development of our medical inventory system.</p>
                     <a href="https://github.com/Hunch-Medical-Inventory-System" class="btn">View on GitHub</a>
                 </div>
-            </div>
-            <!-- New row: download video button (JJs_Sorting.mp4) -->
-            <div class="video-download-row animate-on-scroll">
-                <span><i class="fas fa-film" style="color:#3b82f6; margin-right: 10px;"></i> <strong>JJs Sorting Demo Video (MP4)</strong> — walkthrough of new Alerts filtering</span>
-                <a href="JJs_Sorting.mp4" download class="btn small"><i class="fas fa-download"></i> Download Video</a>
             </div>
         </div>
     </section>
