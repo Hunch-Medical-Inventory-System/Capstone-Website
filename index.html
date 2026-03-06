@@ -93,6 +93,11 @@
             border-color: #3b82f6;
         }
 
+        .btn.small {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+        }
+
         /* ----- navigation (dark, clean) ----- */
         nav {
             background: #0f1318;
@@ -488,6 +493,23 @@
             margin-right: 10px;
         }
 
+        .video-download-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            background: #1b2630;
+            padding: 15px 20px;
+            border-radius: 14px;
+            border: 1px solid #32424f;
+        }
+
+        .video-download-row span {
+            color: #cbdae9;
+            font-weight: 400;
+        }
+
         /* ----- contact form (dark, clean) ----- */
         .contact-form {
             max-width: 620px;
@@ -776,7 +798,8 @@
         </div>
     </section>
 
-
+    
+    <section id="blog">
         <div class="container">
             <h2 class="section-title">Project Blog</h2>
             <div class="blog-grid">
@@ -934,7 +957,32 @@
                     </div>
                 </div>
                 
+                <div class="blog-card animate-on-scroll">
+                    <div class="blog-content">
+                        <div class="blog-date">March 6, 2026</div>
+                        <h3>Weekly Progress Report #11 - Josiah Ehrler</h3>
+                        <div class="blog-section">
+                            <h4>Summary of Work Completed</h4>
+                            <p>This week our team implemented the new sorting and filtering system for the Alerts page based on feedback from the Critical Design Review. The interface now includes dedicated tabs that clearly separate low stock items and expired or soon-to-expire items, allowing users to quickly prioritize the most urgent inventory issues. This is especially useful in high-pressure medical scenarios where response time is critical.</p>
+                            <p>In addition, we made performance improvements to the MedLlama2 integration. The model now runs more smoothly with noticeably reduced latency during typical queries, which improves the responsiveness of the smart search and suggestion features within the system.</p>
+                            <p>To demonstrate the updated Alerts functionality, we recorded a short demo video that walks through the interface and shows the sorting system in action.</p>
+                        </div>
+                        <div class="blog-section">
+                            <h4>Challenges Encountered and Solutions Implemented</h4>
+                            <p>The primary challenge this week was ensuring that the new Alerts filtering system remained simple and intuitive while still handling multiple types of inventory warnings. We addressed this by implementing a clear tab-based layout that separates alert categories instead of combining them into a single list. This significantly improves usability and allows users to immediately identify critical issues.</p>
+                        </div>
+                        <div class="blog-section">
+                            <h4>Goals for the Upcoming Week</h4>
+                            <p>Next week we plan to continue refining the system based on mentor feedback and further test the alert workflow to ensure reliability in real-world scenarios.</p>
+                            <ul>
+                                <li>Additional UI polishing and usability improvements for the Alerts page</li>
+                                <li>Further optimization of MedLlama2 query performance</li>
+                                <li>Collecting feedback from advisors and preparing for the next design review/demo presentation</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
@@ -945,7 +993,7 @@
             <h2 class="section-title">Our Portfolio</h2>
             <div class="resources-grid">
                 <div class="resource-card animate-on-scroll">
-                    <h3><i class="fas fa-file-pdf"></i> Project Documentation - Download funtionality broken</h3>
+                    <h3><i class="fas fa-file-pdf"></i> Project Documentation - Download functionality broken</h3>
                     <p>Complete documentation of our medical inventory system, including technical specifications and implementation details.</p>
                     <a href="#" class="btn">Download PDF</a>
                 </div>
@@ -959,6 +1007,11 @@
                     <p>Access our open-source codebase and contribute to the development of our medical inventory system.</p>
                     <a href="https://github.com/Hunch-Medical-Inventory-System" class="btn">View on GitHub</a>
                 </div>
+            </div>
+            <!-- New row: download video button (JJs_Sorting.mp4) -->
+            <div class="video-download-row animate-on-scroll">
+                <span><i class="fas fa-film" style="color:#3b82f6; margin-right: 10px;"></i> <strong>JJs Sorting Demo Video (MP4)</strong> — walkthrough of new Alerts filtering</span>
+                <a href="JJs_Sorting.mp4" download class="btn small"><i class="fas fa-download"></i> Download Video</a>
             </div>
         </div>
     </section>
