@@ -610,6 +610,20 @@
             .footer-links { flex-wrap: wrap; gap: 1rem; margin-top: 16px; }
             .gallery-container { height: 340px; }
         }
+
+        /* Voice feature badge */
+        .voice-badge {
+            display: inline-block;
+            background: #3b82f6;
+            color: #0b0e12;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 30px;
+            margin-left: 12px;
+            vertical-align: middle;
+            letter-spacing: 0.3px;
+        }
     </style>
 </head>
 <body>
@@ -797,56 +811,153 @@
         <div class="container">
             <h2 class="section-title">Project Blog</h2>
             <div class="blog-grid">
+                <div class="blog-card animate-on-scroll">
+    <div class="blog-content">
+        <div class="blog-date">April 3, 2026</div>
+        <h3>Weekly Progress Report #13 - Josiah Ehrler</h3>
+        <div class="blog-section">
+            <h4>Summary of Work Completed</h4>
+            <p>This week I focused on optimization and a major new feature: voice chat mode for MedLlama2. The optimization efforts targeted memory usage and inference latency on the Jetson Nano, successfully reducing average response time. The highlight of the week is the early-stage integration of a voice chat interface. Using the Web Speech API and lightweight wake-word detection, the system can now accept spoken inventory queries and respond with synthesized audio. Astronauts can now ask "What medical supplies are low?" without touching a keyboard. A critical improvement for zero-gravity or gloves-on scenarios.</p>
+            <p>The voice pipeline consists of a browser-based speech recognition module that streams text to our backend LLM, which then returns a natural language answer. The text-to-speech component uses the browser's native synthesis for immediate feedback. For mission-critical reliability, we have cached fallback voices and implemented a push-to-talk toggle. Early testing shows strong accuracy on medical terminology recognition after customizing the speech model's vocabulary.</p>
+        </div>
+        <div class="blog-section">
+            <h4>FDR Preparation - Houston</h4>
+            <p>With the Final Design Review approaching in Houston, our team has shifted focus toward polishing the system for presentation. We have begun preparing our presentation and rehearsing the live demonstration. The voice mode will be a key differentiator in our presentation, showcasing how our system reduces cognitive load for astronauts.</p>
+        </div>
+        <div class="blog-section">
+            <h4>Challenges Encountered and Solutions Implemented</h4>
+            <p>The biggest challenge was latency: speech recognition to LLM inference to text-to-speech introduced a noticeable delay. To resolve this, I implemented speculative response generation where the system predicts follow-up queries and preloads context.</p>
+        </div>
+        <div class="blog-section">
+            <h4>Goals for the Upcoming Week</h4>
+            <p>With FDR just weeks away, our focus is on stability and presentation readiness. Specific goals include:</p>
+            <ul>
+                <li>Complete final polish of voice chat mode and integrate as a toggle within the main dashboard</li>
+                <li>Expand voice commands to include restock requests and expiry alerts</li>
+                <li>Conduct full system stress tests to ensure no crashes during the Houston demo</li>
+                <li>Finalize FDR presentation and practice delivery as a team</li>
+                <li>Prepare hardware for travel and create a backup plan in case of equipment failure</li>
+                <li>Document all system APIs</li>
+            </ul>
+        </div>
+    </div>
+</div>
 
-                
+                <!-- REPORT 11 -->
                 <div class="blog-card animate-on-scroll">
                     <div class="blog-content">
-                        <div class="blog-date">October 9, 2025</div>
-                        <h3>Weekly Progress Report #1 - Josiah Ehrler</h3>
+                        <div class="blog-date">March 6, 2026</div>
+                        <h3>Weekly Progress Report #11 - Josiah Ehrler</h3>
                         <div class="blog-section">
                             <h4>Summary of Work Completed</h4>
-                            <p>This week, I focused on the creation of our first demo and setting up our Jetson Nano to handle our Database and AI. Progress was made on he front-end visual design, which aligns with our project goal of meeting Nasa's high standard for us. For example, we now have a strong demonstration and a working mySQL database that will be able to run much faster and with less power in space than our previous model by far. These updates keep us on track with the overall project timeline.</p>
+                            <p>This week our team implemented the new sorting and filtering system for the Alerts page based on feedback from the Critical Design Review. The interface now includes dedicated tabs that clearly separate low stock items and expired or soon-to-expire items, allowing users to quickly prioritize the most urgent inventory issues. This is especially useful in high-pressure medical scenarios where response time is critical.</p>
+                            <p>In addition, we made performance improvements to the MedLlama2 integration. The model now runs more smoothly with noticeably reduced latency during typical queries, which improves the responsiveness of the smart search and suggestion features within the system.</p>
+                            <p>To demonstrate the updated Alerts functionality, we recorded a short demo video that walks through the interface and shows the sorting system in action.</p>
+                            <div class="video-embed">
+                                <video controls preload="metadata" poster="home.png">
+                                    <source src="JJs_Sorting.mp4" type="video/mp4">
+                                    Your browser does not support the video tag.
+                                </video>
+                            </div>
                         </div>
                         <div class="blog-section">
                             <h4>Challenges Encountered and Solutions Implemented</h4>
-                            <p>During this week, I encountered issues with setting up oLlama on the Jetson nano, due to many dependencies being outdated. To resolve this, I found a newer and updated model of the LLM that is more scaleable and I was able to easily install it from there. However some challenges remain unresolved, the plan for next week is to continue setting up the database and AI for further integration. This will help improve our project and demonstrationto Nasa, to further show our effort.</p>
+                            <p>The primary challenge this week was ensuring that the new Alerts filtering system remained simple and intuitive while still handling multiple types of inventory warnings. We addressed this by implementing a clear tab-based layout that separates alert categories instead of combining them into a single list. This significantly improves usability and allows users to immediately identify critical issues.</p>
                         </div>
                         <div class="blog-section">
                             <h4>Goals for the Upcoming Week</h4>
-                            <p>Next week, my primary objectives are to connect the Nano database and AI to our front-end demo to have a true demonstaration of how our system will work. These will help advance progress on the overall progression of the project and address any remaining issues from the previous week. Specific goals include:</p>
+                            <p>Next week we plan to continue refining the system based on mentor feedback and further test the alert workflow to ensure reliability in real-world scenarios.</p>
                             <ul>
-                                <li>Complete Nano Installations</li>
-                                <li>Test and refine Nano & Demo communication</li>
-                                <li>Document progress and prepare for PDR meeting</li>
+                                <li>Additional UI polishing and usability improvements for the Alerts page</li>
+                                <li>Further optimization of MedLlama2 query performance</li>
+                                <li>Collecting feedback from advisors and preparing for the next design review/demo presentation</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
+                <!-- REPORT 8 -->
                 <div class="blog-card animate-on-scroll">
                     <div class="blog-content">
-                        <div class="blog-date">November 3, 2025</div>
-                        <h3>Weekly Progress Report #3 - Josiah Ehrler</h3>
+                        <div class="blog-date">February 2, 2026</div>
+                        <h3>Weekly Progress Report #8 - Josiah Ehrler</h3>
                         <div class="blog-section">
                             <h4>Summary of Work Completed</h4>
-                            <p>Since my last update, I have begun work on our final deliverable, now that I have the needed feedback and tools to get started. Our simple HTML demo was a huge hit with the PDR judges, for the second straight year our design was eyecatching. We have also began integrating our LLM, TinyLlama into our software and we are optimistic on the timeline moving forward. These updates keep us on track with the overall project timeline.</p>
+                            <p>This week I finalized the full-duplex communication between MedLlama2 and the Vue App. The AI model now accurately predicts low-stock scenarios based on historical usage patterns and is capable of low-level diagnostics. The CDR Brochures and Tri-Fold have been made and submitted for review.</p>
                         </div>
                         <div class="blog-section">
                             <h4>Challenges Encountered and Solutions Implemented</h4>
-                            <p>During this period my main challenge was fining a ballance of work between myself and my teamates, everyone has certain skills that they excel in and it takes work to properly get everyone working seamlessly. To resolve this, I had a team meeting to review where we were at, what was and wasnt going well, and to see what everyone was good / happy working with. Although, some challenges remain unresolved, we are still having slight technical errors with our pi software, though they are being actively worked on.</p>
+                            <p>The main blocker was memory fragmentation on the Nano after repeated LLM calls. I implemented a model warm-up routine and garbage collection hook that reduced crashes significantly.</p>
                         </div>
                         <div class="blog-section">
                             <h4>Goals for the Upcoming Week</h4>
-                            <p>Next week, my primary objectives are to complete the integration of the LLM and database into our final deliverable. These will help advance progress on the overall progression of the project and address any remaining issues from the previous week. Specific goals include:</p>
+                            <p>Next week we're doing a full system integration test. And ill be recording the system demo. I'll also be polishing the UI motion design and preparing for the CDR presentation.</p>
+                            <ul>
+                                <li>End-to-end encryption handshake with inventory DB</li>
+                                <li>UI micro-interactions and responsiveness</li>
+                                <li>Final CDR presentation items + speaker notes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REPORT 7 -->
+                <div class="blog-card animate-on-scroll">
+                    <div class="blog-content">
+                        <div class="blog-date">January 12, 2026</div>
+                        <h3>Weekly Progress Report #7 - Josiah Ehrler</h3>
+                        <div class="blog-section">
+                            <h4>Summary of Work Completed</h4>
+                            <p>To begin the year, the majority of my time has been spent rebuilding, redesigning, and fixing the core framework of our final deliverable. Early on, we found several critical issues with Vuetify that significantly slowed development. After multiple unsuccessful attempts to resolve these errors, I determined that a full reinstall was the most effective and time-efficient solution. Since completing the reinstall, the project has been running much more smoothly, with noticeably fewer errors and improved overall performance. This process reinforced the importance of recognizing when a foundational issue requires a full reset rather than continued patchwork fixes, ultimately saving time and reducing long-term technical debt.</p>
+                        </div>
+                        <div class="blog-section">
+                            <h4>Challenges Encountered and Solutions Implemented</h4>
+                            <p>This week I focused on rebuilding the core framework of our deliverable to fix persistent Vuetify issues caused by configuration and dependency conflicts. I reinstalled Vuetify, restructured components, and rebuilt the layout, resulting in a more stable and reliable foundation for future development.</p>
+                        </div>
+                        <div class="blog-section">
+                            <h4>Goals for the Upcoming Week</h4>
+                            <p>Next week, my primary goals are to complete the integration of the LLM and database into our final deliverable. I will finish the TinyLlama backend, test and refine the UI to ensure a cohesive and appealing design, and document progress in preparation for the CDR meeting. These steps will advance the project's functionality and address remaining technical issues.</p>
                             <ul>
                                 <li>Complete TinyLlama Backend</li>
-                                <li>Test and refine UI, to find an appealing look</li>
+                                <li>Integration of the Database</li>
                                 <li>Document progress and prepare for CDR meeting</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
+                <!-- REPORT 6 (Mid Year Review) -->
+                <div class="blog-card animate-on-scroll">
+                    <div class="blog-content">
+                        <div class="blog-date">November 21, 2025</div>
+                        <h3>Weekly Progress Report #6 - Mid Year Review - Josiah Ehrler</h3>
+                        <div class="blog-section">
+                            <h4>Summary of the Year so Far</h4>
+                            <p>Halfway through the year, the project is in a good spot overall. We started with a rough idea for a medical inventory system powered by a lightweight LLM, and now we're finally at the stage where everything is starting to come together into one working system instead of scattered pieces.</p>
+                            <p>The early weeks were mostly figuring things out, brainstorming what the system should look like to make it different than last year and then turning that into something we could actually show. The simple HTML demo ended up being a huge win. It wasn't complicated, but it looked good and clearly explained the idea, and the PDR judges noticed. That early momentum helped a lot. Since then, most of the work has been on the backend and AI side. Integrating TinyLlama took time, but we now have it talking to the database and the UI in a way that actually works in testing. Response speed has gotten noticeably better over the last few weeks, and we've started shaping the UI around how the system really behaves instead of how we expected it to behave on paper.</p>
+                        </div>
+                        <div class="blog-section">
+                            <h4>Challenges Encountered and Solutions Implemented</h4>
+                            <p>It hasn't been smooth the whole way. The biggest non-technical struggle has been getting the workload balanced across the team. Everyone has different strengths, and it took a few meetings to figure out who should be doing what so things don't bottleneck. Technically, the Raspberry Pi has caused the most headaches. Performance has been inconsistent and a few bugs show up only on the Pi and nowhere else, which slows debugging a lot. The LLM-database connection also caused UI freezes earlier in the semester until we reworked how data was being pulled. None of these problems stopped progress, but they definitely shaped the pace of the semester.</p>
+                        </div>
+                        <div class="blog-section">
+                            <h4>Goals for the Upcoming Semester</h4>
+                            <p>Next semester mostly be about tightening everything up:</p>
+                            <ul>
+                                <li>Stress test the system and fix whatever breaks</li>
+                                <li>Polish the UI so it looks good and makes sense for users</li>
+                                <li>Improve documentation so we're ready for CDR</li>
+                                <li>Get the final version working cleanly on the Raspberry Pi</li>
+                            </ul>
+                        </div>
+                        <div class="blog-section">
+                            <h4>Final Thoughts</h4>
+                            <p>The first half of the year had a mix of wins and roadblocks, but the big takeaway is that the hard part (getting everything working together) is mostly behind us. The rest of the year is about refinement, not invention. If progress continues the way it has, we'll be ready for the final presentation with something we're actually proud to show.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- REPORT 4&5 -->
                 <div class="blog-card animate-on-scroll">
                     <div class="blog-content">
                         <div class="blog-date">November 14, 2025</div>
@@ -871,122 +982,55 @@
                     </div>
                 </div>
 
+                <!-- REPORT 3 -->
                 <div class="blog-card animate-on-scroll">
                     <div class="blog-content">
-                        <div class="blog-date">November 21, 2025</div>
-                        <h3>Weekly Progress Report #6 - Mid Year Review - Josiah Ehrler</h3>
-                        <div class="blog-section">
-                            <h4>Summary of the Year so Far</h4>
-                            <p>Halfway through the year, the project is in a good spot overall. We started with a rough idea for a medical inventory system powered by a lightweight LLM, and now we’re finally at the stage where everything is starting to come together into one working system instead of scattered pieces.</p>
-                        </div>
-                        <div class="blog-section">
-                            <h4>Summary of the Year so Far</h4>
-                            <p>The early weeks were mostly figuring things out, brainstorming what the system should look like to make it different than last year and then turning that into something we could actually show. The simple HTML demo ended up being a huge win. It wasn’t complicated, but it looked good and clearly explained the idea, and the PDR judges noticed. That early momentum helped a lot. Since then, most of the work has been on the backend and AI side. Integrating TinyLlama took time, but we now have it talking to the database and the UI in a way that actually works in testing. Response speed has gotten noticeably better over the last few weeks, and we’ve started shaping the UI around how the system really behaves instead of how we expected it to behave on paper.</p>
-                        </div>
-                        <div class="blog-section">
-                            <h4>Challenges Encountered and Solutions Implemented</h4>
-                            <p>It hasn’t been smooth the whole way. The biggest non-technical struggle has been getting the workload balanced across the team. Everyone has different strengths, and it took a few meetings to figure out who should be doing what so things don’t bottleneck. Technically, the Raspberry Pi has caused the most headaches. Performance has been inconsistent and a few bugs show up only on the Pi and nowhere else, which slows debugging a lot. The LLM-database connection also caused UI freezes earlier in the semester until we reworked how data was being pulled. None of these problems stopped progress, but they definitely shaped the pace of the semester.</p>
-                        </div>
-                        <div class="blog-section">
-                            <h4>Goals for the Upcoming Semester</h4>
-                            <p>Next semester mostly be about tightening everything up:</p>
-                            <ul>
-                                <li>Stress test the system and fix whatever breaks</li>
-                                <li>Polish the UI so it looks good and makes sense for users</li>
-                                <li>Improve documentation so we’re ready for CDR</li>
-                                <li>Get the final version working cleanly on the Raspberry Pi</li>
-                            </ul>
-                        </div>
-                        <div class="blog-section">
-                            <h4>Final Thoughts</h4>
-                            <p>The first half of the year had a mix of wins and roadblocks, but the big takeaway is that the hard part (getting everything working together) is mostly behind us. The rest of the year is about refinement, not invention. If progress continues the way it has, we’ll be ready for the final presentation with something we’re actually proud to show.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="blog-card animate-on-scroll">
-                    <div class="blog-content">
-                        <div class="blog-date">January 12, 2026</div>
-                        <h3>Weekly Progress Report #7 - Josiah Ehrler</h3>
+                        <div class="blog-date">November 3, 2025</div>
+                        <h3>Weekly Progress Report #3 - Josiah Ehrler</h3>
                         <div class="blog-section">
                             <h4>Summary of Work Completed</h4>
-                            <p>To begin the year, the majority of my time has been spent rebuilding, redesigning, and fixing the core framework of our final deliverable. Early on, we found several critical issues with Vuetify that significantly slowed development. After multiple unsuccessful attempts to resolve these errors, I determined that a full reinstall was the most effective and time-efficient solution. Since completing the reinstall, the project has been running much more smoothly, with noticeably fewer errors and improved overall performance. This process reinforced the importance of recognizing when a foundational issue requires a full reset rather than continued patchwork fixes, ultimately saving time and reducing long-term technical debt.</p>
+                            <p>Since my last update, I have begun work on our final deliverable, now that I have the needed feedback and tools to get started. Our simple HTML demo was a huge hit with the PDR judges, for the second straight year our design was eyecatching. We have also began integrating our LLM, TinyLlama into our software and we are optimistic on the timeline moving forward. These updates keep us on track with the overall project timeline.</p>
                         </div>
                         <div class="blog-section">
                             <h4>Challenges Encountered and Solutions Implemented</h4>
-                            <p>This week I focused on rebuilding the core framework of our deliverable to fix persistent Vuetify issues caused by configuration and dependency conflicts. I reinstalled Vuetify, restructured components, and rebuilt the layout, resulting in a more stable and reliable foundation for future development.</p>
+                            <p>During this period my main challenge was fining a ballance of work between myself and my teamates, everyone has certain skills that they excel in and it takes work to properly get everyone working seamlessly. To resolve this, I had a team meeting to review where we were at, what was and wasnt going well, and to see what everyone was good / happy working with. Although, some challenges remain unresolved, we are still having slight technical errors with our pi software, though they are being actively worked on.</p>
                         </div>
                         <div class="blog-section">
                             <h4>Goals for the Upcoming Week</h4>
-                            <p>Next week, my primary goals are to complete the integration of the LLM and database into our final deliverable. I will finish the TinyLlama backend, test and refine the UI to ensure a cohesive and appealing design, and document progress in preparation for the CDR meeting. These steps will advance the project’s functionality and address remaining technical issues.</p>
+                            <p>Next week, my primary objectives are to complete the integration of the LLM and database into our final deliverable. These will help advance progress on the overall progression of the project and address any remaining issues from the previous week. Specific goals include:</p>
                             <ul>
                                 <li>Complete TinyLlama Backend</li>
-                                <li>Integration of the Database</li>
+                                <li>Test and refine UI, to find an appealing look</li>
                                 <li>Document progress and prepare for CDR meeting</li>
                             </ul>
                         </div>
                     </div>
                 </div>
 
+                <!-- REPORT 1 -->
                 <div class="blog-card animate-on-scroll">
                     <div class="blog-content">
-                        <div class="blog-date">February 2, 2026</div>
-                        <h3>Weekly Progress Report #8 - Josiah Ehrler</h3>
+                        <div class="blog-date">October 9, 2025</div>
+                        <h3>Weekly Progress Report #1 - Josiah Ehrler</h3>
                         <div class="blog-section">
                             <h4>Summary of Work Completed</h4>
-                            <p>This week I finalized the full-duplex communication between MedLlama2 and the Vue App. The AI model now accurately predicts low-stock scenarios based on historical usage patterns and is capable of low-level diagnostics. The CDR Brochures and Tri-Fold have been made and submitted for review.</p>
+                            <p>This week, I focused on the creation of our first demo and setting up our Jetson Nano to handle our Database and AI. Progress was made on he front-end visual design, which aligns with our project goal of meeting Nasa's high standard for us. For example, we now have a strong demonstration and a working mySQL database that will be able to run much faster and with less power in space than our previous model by far. These updates keep us on track with the overall project timeline.</p>
                         </div>
                         <div class="blog-section">
                             <h4>Challenges Encountered and Solutions Implemented</h4>
-                            <p>The main blocker was memory fragmentation on the Nano after repeated LLM calls. I implemented a model warm-up routine and garbage collection hook that reduced crashes significantly.</p>
+                            <p>During this week, I encountered issues with setting up oLlama on the Jetson nano, due to many dependencies being outdated. To resolve this, I found a newer and updated model of the LLM that is more scaleable and I was able to easily install it from there. However some challenges remain unresolved, the plan for next week is to continue setting up the database and AI for further integration. This will help improve our project and demonstrationto Nasa, to further show our effort.</p>
                         </div>
                         <div class="blog-section">
                             <h4>Goals for the Upcoming Week</h4>
-                            <p>Next week we're doing a full system integration test. And ill be recording the system demo. I'll also be polishing the UI motion design and preparing for the CDR presentation.</p>
+                            <p>Next week, my primary objectives are to connect the Nano database and AI to our front-end demo to have a true demonstaration of how our system will work. These will help advance progress on the overall progression of the project and address any remaining issues from the previous week. Specific goals include:</p>
                             <ul>
-                                <li>End-to-end encryption handshake with inventory DB</li>
-                                <li>UI micro-interactions and responsiveness</li>
-                                <li>Final CDR presentation items + speaker notes</li>
+                                <li>Complete Nano Installations</li>
+                                <li>Test and refine Nano & Demo communication</li>
+                                <li>Document progress and prepare for PDR meeting</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-                
-
-                <div class="blog-card animate-on-scroll">
-                    <div class="blog-content">
-                        <div class="blog-date">March 6, 2026</div>
-                        <h3>Weekly Progress Report #11 - Josiah Ehrler</h3>
-                        <div class="blog-section">
-                            <h4>Summary of Work Completed</h4>
-                            <p>This week our team implemented the new sorting and filtering system for the Alerts page based on feedback from the Critical Design Review. The interface now includes dedicated tabs that clearly separate low stock items and expired or soon-to-expire items, allowing users to quickly prioritize the most urgent inventory issues. This is especially useful in high-pressure medical scenarios where response time is critical.</p>
-                            <p>In addition, we made performance improvements to the MedLlama2 integration. The model now runs more smoothly with noticeably reduced latency during typical queries, which improves the responsiveness of the smart search and suggestion features within the system.</p>
-                            <p>To demonstrate the updated Alerts functionality, we recorded a short demo video that walks through the interface and shows the sorting system in action.</p>
-                            
-                           
-                            <div class="video-embed">
-                                <video controls preload="metadata" poster="home.png">
-                                    <source src="JJs_Sorting.mp4" type="video/mp4">
-                                    Your browser does not support the video tag.
-                                </video>
-                            </div>
-                        </div>
-                        <div class="blog-section">
-                            <h4>Challenges Encountered and Solutions Implemented</h4>
-                            <p>The primary challenge this week was ensuring that the new Alerts filtering system remained simple and intuitive while still handling multiple types of inventory warnings. We addressed this by implementing a clear tab-based layout that separates alert categories instead of combining them into a single list. This significantly improves usability and allows users to immediately identify critical issues.</p>
-                        </div>
-                        <div class="blog-section">
-                            <h4>Goals for the Upcoming Week</h4>
-                            <p>Next week we plan to continue refining the system based on mentor feedback and further test the alert workflow to ensure reliability in real-world scenarios.</p>
-                            <ul>
-                                <li>Additional UI polishing and usability improvements for the Alerts page</li>
-                                <li>Further optimization of MedLlama2 query performance</li>
-                                <li>Collecting feedback from advisors and preparing for the next design review/demo presentation</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-          
 
             </div>
         </div>
